@@ -125,6 +125,7 @@ end
 
 @inline some_vector(::Type{T}, dims::Int...) where T<:Number = Vector{T}(undef, dims...)
 @inline some_vector(::Type{T}, dims::Int...) where T<:Bool = BitArray(undef, dims...)
+@inline some_vector(::Type{T}, dims::Int...) where T<:Tuple = Vector{T}(undef, dims...) #Enables propagation of tuples instead of a single value
 
 @inline uniform(dims::Int...) = ones(Float64, dims...) ./ prod(dims)
 
